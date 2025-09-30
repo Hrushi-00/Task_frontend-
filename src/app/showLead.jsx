@@ -31,7 +31,7 @@ const LeadsTable = () => {
 
   const fetchLeads = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/leads/getLeads");
+      const res = await axios.get("https://taskbackend-production-6cae.up.railway.app/api/leads/getLeads");
       setLeads(res.data.leads);
     } catch (error) {
       console.error("Error fetching leads:", error);
@@ -58,7 +58,7 @@ const LeadsTable = () => {
       let response;
       if (editingLead) {
         response = await fetch(
-          `http://localhost:5000/api/leads/updateLead/${editingLead._id}`,
+          `https://taskbackend-production-6cae.up.railway.app/leads/updateLead/${editingLead._id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ const LeadsTable = () => {
           }
         );
       } else {
-        response = await fetch("http://localhost:5000/api/leads/createLead", {
+        response = await fetch("https://taskbackend-production-6cae.up.railway.app/leads/createLead", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -117,7 +117,7 @@ const LeadsTable = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this lead?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/leads/deleteLead/${id}`);
+        await axios.delete(`https://taskbackend-production-6cae.up.railway.app/api/leads/deleteLead/${id}`);
         setLeads(leads.filter((lead) => lead._id !== id));
         toast.success("Lead deleted successfully!");
       } catch (error) {
@@ -293,3 +293,4 @@ const LeadsTable = () => {
 };
 
 export default LeadsTable;
+
