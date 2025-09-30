@@ -58,7 +58,7 @@ const LeadsTable = () => {
       let response;
       if (editingLead) {
         response = await fetch(
-          `https://taskbackend-production-6cae.up.railway.app/leads/updateLead/${editingLead._id}`,
+          `https://taskbackend-production-6cae.up.railway.app/api/leads/updateLead/${editingLead._id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ const LeadsTable = () => {
           }
         );
       } else {
-        response = await fetch("https://taskbackend-production-6cae.up.railway.app/leads/createLead", {
+        response = await fetch("https://taskbackend-production-6cae.up.railway.app/api/leads/createLead", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -293,4 +293,5 @@ const LeadsTable = () => {
 };
 
 export default LeadsTable;
+
 
